@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="The personal portfolio of Arpit Keshri — CSE student, creative coder, photographer and chess enthusiast.">
+  <title>Arpit Keshri | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: rgba(18, 26, 48, .78);
+      --surface-2: #151e36;
+      --text: #f4f6ff;
+      --muted: #a7b0c7;
+      --accent: #8b9cff;
+      --accent-2: #61e4c5;
+      --line: rgba(255,255,255,.1);
+      --shadow: 0 24px 70px rgba(0,0,0,.28);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 12% 5%, rgba(91,111,255,.18), transparent 35%),
+        radial-gradient(ellipse at 88% 38%, rgba(44,211,181,.10), transparent 32%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1080px, calc(100% - 40px)); margin: auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); background: rgba(11,16,32,.78); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.15rem; }
+    .brand span { color: var(--accent-2); }
+    .nav-links { display: flex; gap: 25px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--text); }
+    .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 8px 11px; font-size: 1.1rem; }
+    .hero { min-height: 680px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 60px; padding: 92px 0 100px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-2); font-size: .82rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow:before { content: ""; width: 25px; height: 1px; background: currentColor; }
+    h1 { font-size: clamp(3.2rem, 7vw, 6.3rem); line-height: .99; letter-spacing: -.075em; margin: 22px 0; }
+    h1 span { color: var(--accent); }
+    .hero-copy { max-width: 610px; color: var(--muted); font-size: 1.1rem; }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 19px; border-radius: 999px; font-weight: 700; font-size: .92rem; border: 1px solid var(--line); transition: .2s ease; }
+    .btn.primary { color: #0b1020; background: linear-gradient(120deg, var(--accent-2), #a7f3dc); border: 0; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.2); }
+    .hero-card { position: relative; padding: 30px; border: 1px solid var(--line); background: linear-gradient(145deg, rgba(32,44,78,.88), rgba(15,22,42,.88)); border-radius: 30px; box-shadow: var(--shadow); overflow: hidden; }
+    .hero-card:before { content: ""; position: absolute; width: 210px; height: 210px; border-radius: 50%; background: rgba(139,156,255,.17); filter: blur(3px); top: -100px; right: -80px; }
+    .monogram { width: 112px; height: 112px; display: grid; place-items: center; border-radius: 28px; background: linear-gradient(140deg, var(--accent), #5969d8); color: white; font-size: 2.5rem; font-weight: 900; letter-spacing: -.08em; box-shadow: 0 15px 35px rgba(91,111,255,.28); }
+    .card-kicker { color: var(--muted); text-transform: uppercase; letter-spacing: .13em; font-size: .72rem; margin: 28px 0 5px; }
+    .hero-card h2 { margin: 0; font-size: 1.55rem; letter-spacing: -.04em; }
+    .hero-card p { color: var(--muted); margin: 8px 0 20px; }
+    .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .fact { padding: 12px; background: rgba(255,255,255,.045); border: 1px solid var(--line); border-radius: 14px; }
+    .fact small { display: block; color: var(--muted); font-size: .7rem; }
+    .fact strong { font-size: .88rem; }
+    section { padding: 78px 0; }
+    .section-head { margin-bottom: 30px; }
+    .section-head .eyebrow { font-size: .75rem; }
+    h2.section-title { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.06em; line-height: 1.1; margin: 12px 0 0; }
+    .section-intro { color: var(--muted); max-width: 620px; margin-top: 12px; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 27px; box-shadow: var(--shadow); }
+    .panel p { color: var(--muted); margin: 0; }
+    .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
+    .education-item { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 15px; padding: 16px; }
+    .education-item strong { display: block; font-size: 1.5rem; letter-spacing: -.04em; color: var(--accent-2); }
+    .education-item span { color: var(--muted); font-size: .86rem; }
+    .detail-list { display: grid; gap: 14px; }
+    .detail-row { display: flex; justify-content: space-between; gap: 18px; padding-bottom: 13px; border-bottom: 1px solid var(--line); }
+    .detail-row:last-child { border: 0; padding: 0; }
+    .detail-row span { color: var(--muted); }
+    .detail-row strong { text-align: right; font-weight: 650; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card, .hobby-card { padding: 23px; background: var(--surface); border: 1px solid var(--line); border-radius: 19px; transition: .2s ease; }
+    .skill-card:hover, .hobby-card:hover, .project-card:hover { transform: translateY(-5px); border-color: rgba(139,156,255,.45); }
+    .icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 13px; background: rgba(139,156,255,.13); font-size: 1.25rem; margin-bottom: 17px; }
+    .skill-card h3, .hobby-card h3 { margin: 0 0 5px; font-size: 1.05rem; }
+    .skill-card p, .hobby-card p { color: var(--muted); font-size: .88rem; margin: 0; }
+    .project-card { display: grid; grid-template-columns: .85fr 1.15fr; gap: 25px; align-items: center; padding: 26px; background: linear-gradient(130deg, rgba(32,44,78,.8), rgba(17,25,46,.88)); border: 1px solid var(--line); border-radius: 24px; transition: .2s ease; }
+    .project-art { min-height: 210px; display: grid; place-items: center; border-radius: 17px; background: radial-gradient(circle at 50% 35%, rgba(97,228,197,.22), transparent 50%), #10182e; border: 1px solid var(--line); overflow: hidden; }
+    .bird-scene { font-size: 4rem; filter: drop-shadow(0 10px 12px rgba(0,0,0,.35)); }
+    .project-card h3 { font-size: 1.6rem; margin: 0 0 8px; letter-spacing: -.04em; }
+    .project-card p { color: var(--muted); margin: 0 0 17px; }
+    .tag { display: inline-block; color: var(--accent-2); background: rgba(97,228,197,.09); border: 1px solid rgba(97,228,197,.2); border-radius: 999px; padding: 5px 10px; font-size: .75rem; margin: 0 5px 5px 0; }
+    .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 25px; background: linear-gradient(110deg, rgba(139,156,255,.16), rgba(97,228,197,.08)); border: 1px solid var(--line); border-radius: 24px; padding: 32px; }
+    .contact-panel p { color: var(--muted); margin: 8px 0 0; }
+    footer { padding: 28px 0 38px; color: var(--muted); font-size: .83rem; border-top: 1px solid var(--line); }
+    footer .container { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; gap: 35px; min-height: auto; padding: 75px 0; }
+      .hero-card { max-width: 470px; }
+      .about-grid, .project-card { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .contact-panel { align-items: flex-start; flex-direction: column; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 18px 20px 22px; flex-direction: column; gap: 15px; background: #0e1529; border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+    }
+    @media (max-width: 480px) {
+      .container { width: min(100% - 30px, 1080px); }
+      .cards, .education-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 3.35rem; }
+      section { padding: 60px 0; }
+      .panel { padding: 21px; }
+      .detail-row { flex-direction: column; gap: 2px; }
+      .detail-row strong { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">AK<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#hobbies">Hobbies</a><a href="#contact">Contact</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div>
+        <div class="eyebrow">CSE student · Creative thinker</div>
+        <h1>Hi, I'm<br><span>Arpit Keshri.</span></h1>
+        <p class="hero-copy">A first-year Computer Science student exploring technology, building things with AI, capturing moments through photography, and always learning something new.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="#about">More about me <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="monogram" aria-label="Arpit Keshri initials">AK</div>
+        <div class="card-kicker">A little introduction</div>
+        <h2>Curious by nature.<br>Creative by choice.</h2>
+        <p>Learning, experimenting, and turning ideas into projects — one step at a time.</p>
+        <div class="quick-facts">
+          <div class="fact"><small>STUDENT</small><strong>CSE · 1st Year</strong></div>
+          <div class="fact"><small>SECTION</small><strong>17th</strong></div>
+          <div class="fact"><small>INTEREST</small><strong>Technology</strong></div>
+          <div class="fact"><small>PROJECT</small><strong>Flappy Bird Game</strong></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">01 · About me</div><h2 class="section-title">A student with a curious mind.</h2><p class="section-intro">I'm at the beginning of my journey in computer science. I enjoy exploring new tools, learning by building, and balancing technology with creative interests.</p></div>
+        <div class="about-grid">
+          <div class="panel reveal">
+            <p>My interests sit at the intersection of technology and creativity. I enjoy experimenting with vibe coding, communicating ideas, and using photography to notice the little details around me. Outside academics, chess keeps me thinking strategically and basketball keeps me active.</p>
+            <div class="education-grid">
+              <div class="education-item"><strong>81%</strong><span>Class 12 · Percentage</span></div>
+              <div class="education-item"><strong>87.8%</strong><span>Class 10 · Percentage</span></div>
+            </div>
+          </div>
+          <div class="panel reveal">
+            <div class="detail-list">
+              <div class="detail-row"><span>Name</span><strong>Arpit Keshri</strong></div>
+              <div class="detail-row"><span>Registration no.</span><strong>261FA04244</strong></div>
+              <div class="detail-row"><span>Section</span><strong>17th</strong></div>
+              <div class="detail-row"><span>Education</span><strong>B.Tech · CSE · 1st Year</strong></div>
+              <div class="detail-row"><span>Current focus</span><strong>Learning & building</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">02 · What I do</div><h2 class="section-title">Skills I'm growing.</h2><p class="section-intro">A mix of technical curiosity and people-focused skills that I continue to develop.</p></div>
+        <div class="cards">
+          <article class="skill-card reveal"><div class="icon">✦</div><h3>Vibe Coding</h3><p>Experimenting with AI-assisted tools to turn ideas into working projects.</p></article>
+          <article class="skill-card reveal"><div class="icon">📷</div><h3>Photography</h3><p>Finding interesting perspectives and capturing moments through a lens.</p></article>
+          <article class="skill-card reveal"><div class="icon">💬</div><h3>Communication</h3><p>Sharing thoughts, connecting with people, and expressing ideas clearly.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">03 · Selected work</div><h2 class="section-title">Things I've built.</h2><p class="section-intro">My project journey is just getting started. Here's one of my first experiments.</p></div>
+        <article class="project-card reveal">
+          <div class="project-art" aria-label="Flappy Bird inspired illustration"><div class="bird-scene">🐤 🟩</div></div>
+          <div>
+            <span class="tag">Game development</span><span class="tag">AI-assisted</span>
+            <h3>Flappy Bird Game</h3>
+            <p>Built a Flappy Bird-style game using Google AI Studio. This project was a hands-on way to explore vibe coding, experiment with an idea, and learn by making something playable.</p>
+            <span class="tag">Google AI Studio</span><span class="tag">Personal project</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="hobbies">
+      <div class="container">
+        <div class="section-head reveal"><div class="eyebrow">04 · Beyond the screen</div><h2 class="section-title">A few things I enjoy.</h2></div>
+        <div class="cards">
+          <article class="hobby-card reveal"><div class="icon">♟️</div><h3>Chess</h3><p>Thinking ahead, spotting patterns, and learning from every move.</p></article>
+          <article class="hobby-card reveal"><div class="icon">🏀</div><h3>Basketball</h3><p>Teamwork, energy, and the joy of being on the court.</p></article>
+          <article class="hobby-card reveal"><div class="icon">🎧</div><h3>Listening to Music</h3><p>Finding a soundtrack for every mood and moment.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div><div class="eyebrow">05 · Get in touch</div><h2 class="section-title">Let's connect.</h2><p>Have an idea, a project, or just want to talk about technology? I'd be happy to connect.</p></div>
+          <a class="btn primary" href="mailto:">Email me <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><span>© <span id="year"></span> Arpit Keshri. Built with curiosity.</span><a href="#home">Back to top ↑</a></div></footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
